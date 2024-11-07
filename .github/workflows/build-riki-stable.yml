@@ -20,5 +20,6 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     secrets: inherit
     with:
-      brand_name: riki
+      brand_name: aurora
       fedora_version: stable
+      stream_name: stable
