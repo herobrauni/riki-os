@@ -114,9 +114,9 @@
               containerfiles: |
                 ./Containerfile
               build_args: |
-                SOURCE_IMAGE=${{ matrix.SOURCE_IMAGE }}
-                SOURCE_SUFFIX=${{ matrix.SOURCE_SUFFIX }}
-                SOURCE_TAG=${{ matrix.SOURCE_TAG }}
+                SOURCE_IMAGE=${{ matrix.source_image }}
+                SOURCE_SUFFIX=${{ matrix.source_suffix }}
+                SOURCE_TAG=${{ matrix.source_tag }}
 
               # Postfix image name with -custom to make it a little more descriptive
               # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
