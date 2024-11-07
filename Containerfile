@@ -6,12 +6,11 @@
 
 # SOURCE_IMAGE arg can be anything from ublue upstream which matches your desired version:
 # See list here: https://github.com/orgs/ublue-os/packages?repo_name=main
-# ARG SOURCE_IMAGE="aurora"
-
-# ARG SOURCE_SUFFIX="-dx-nvidia"
+ARG SOURCE_IMAGE="${SOURCE_IMAGE:-aurora}"
+ARG SOURCE_SUFFIX="${SOURCE_SUFFIX:-dx}"
 
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
-# ARG SOURCE_TAG="stable-daily"
+ARG SOURCE_TAG="${SOURCE_TAG:-stable-daily}"
 
 
 ### 2. SOURCE IMAGE

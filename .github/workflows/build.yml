@@ -28,19 +28,27 @@
           packages: write
           id-token: write
 
+        strategy:
+          matrix:
+            source_image:
+              - aurora
+            source_suffix:
+              - -dx
+              - -dx-nvidia
+            source_tag:
+              - stable
+              - stable-daily
+
         steps:
           # Checkout push-to-registry action GitHub repository
           - name: Checkout Push to Registry action
             uses: actions/checkout@v4
 
-
-          # - name: Matrix Variables
-          #   run: |
-          #     set -eoux pipefail
-          #     echo "SOURCE_IMAGE"="aurora" >> $GITHUB_ENV
-          #     echo "SOURCE_SUFFIX"="-dx-nvidia" >> $GITHUB_ENV
-          #     echo "SOURCE_TAG"="stable-daily" >> $GITHUB_ENV
-
+          - name: Matrix Variables
+            run: |
+              echo "SOURCE_IMAGE=${{ matrix.source_image }}" >> $GITHUB_ENV
+              echo "SOURCE_SUFFIX=${{ matrix.source_suffix }}" >> $GITHUB_ENV
+              echo "SOURCE_TAG=${{ matrix.source_tag }}" >> $GITHUB_ENV
 
           # - name: Maximize build space
           #   uses: ublue-os/remove-unwanted-software@v7
@@ -106,9 +114,9 @@
               containerfiles: |
                 ./Containerfile
               build_args: |
-                SOURCE_IMAGE="aurora"
-                SOURCE_SUFFIX="-dx-nvidia"
-                SOURCE_TAG="stable-daily"
+                SOURCE_IMAGE=${{ matrix.SOURCE_IMAGE }}
+                SOURCE_SUFFIX=${{ matrix.SOURCE_SUFFIX }}
+                SOURCE_TAG=${{ matrix.SOURCE_TAG }}
 
               # Postfix image name with -custom to make it a little more descriptive
               # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
