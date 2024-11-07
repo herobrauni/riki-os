@@ -12,6 +12,9 @@
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
 # ARG SOURCE_TAG="${SOURCE_TAG:-stable-daily}"
 
+ARG SOURCE_IMAGE="${SOURCE_IMAGE}"
+ARG SOURCE_SUFFIX="${SOURCE_SUFFIX}"
+ARG SOURCE_TAG="${SOURCE_TAG}"
 
 ### 2. SOURCE IMAGE
 ## this is a standard Containerfile FROM using the build ARGs above to select the right upstream image
