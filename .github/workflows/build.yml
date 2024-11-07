@@ -46,9 +46,9 @@
 
           - name: Matrix Variables
             run: |
-              echo "SOURCE_IMAGE=${{ env.source_image }}" >> $GITHUB_ENV
-              echo "SOURCE_SUFFIX=${{ env.source_suffix }}" >> $GITHUB_ENV
-              echo "SOURCE_TAG=${{ env.source_tag }}" >> $GITHUB_ENV
+              echo "SOURCE_IMAGE=${{ matrix.source_image }}" >> $GITHUB_ENV
+              echo "SOURCE_SUFFIX=${{ matrix.source_suffix }}" >> $GITHUB_ENV
+              echo "SOURCE_TAG=${{ matrix.source_tag }}" >> $GITHUB_ENV
 
           # - name: Maximize build space
           #   uses: ublue-os/remove-unwanted-software@v7
@@ -114,9 +114,9 @@
               containerfiles: |
                 ./Containerfile
               build_args: |
-                SOURCE_IMAGE=${{ matrix.source_image }}
-                SOURCE_SUFFIX=${{ matrix.source_suffix }}
-                SOURCE_TAG=${{ matrix.source_tag }}
+                SOURCE_IMAGE=${{ env.source_image }}
+                SOURCE_SUFFIX=${{ env.source_suffix }}
+                SOURCE_TAG=${{ env.source_tag }}
 
               # Postfix image name with -custom to make it a little more descriptive
               # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
