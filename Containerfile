@@ -26,12 +26,12 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 COPY build.sh /tmp/build.sh
+COPY cachyos.sh /tmp/cachyos.sh
 
 RUN mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
-    mv /var/lib/alternatives /staged-alternatives && \
-    rm -rf /tmp/* /var/* && \
-    ostree container commit && \
-    mkdir -p /var/lib && mv /staged-alternatives /var/lib/alternatives && \
-    mkdir -p /var/tmp && \
-    chmod -R 1777 /var/tmp
+    ostree container commit
+
+RUN mkdir -p /var/lib/alternatives && \
+    /tmp/cachyos.sh && \
+    ostree container commit
