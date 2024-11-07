@@ -21,4 +21,4 @@ jobs:
     secrets: inherit
     with:
       brand_name: riki
-      fedora_version: stable
+      stream_name: stable
