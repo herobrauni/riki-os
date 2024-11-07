@@ -113,7 +113,7 @@
             with:
               containerfiles: |
                 ./Containerfile
-              build_args: |
+              build-args: |
                 SOURCE_IMAGE=${{ env.source_image }}
                 SOURCE_SUFFIX=${{ env.source_suffix }}
                 SOURCE_TAG=${{ env.source_tag }}
