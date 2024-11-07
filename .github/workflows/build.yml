@@ -48,7 +48,7 @@
               echo "SOURCE_IMAGE=${{ matrix.source_image }}" >> $GITHUB_ENV
               echo "SOURCE_SUFFIX=${{ matrix.source_suffix }}" >> $GITHUB_ENV
               echo "SOURCE_TAG=${{ matrix.source_tag }}" >> $GITHUB_ENV
-              echo "MY_IMAGE_NAME=riki-${{ matrix.source_suffix }}" >> $GITHUB_ENV
+              echo "MY_IMAGE_NAME=riki${{ matrix.source_suffix }}" >> $GITHUB_ENV
 
           - name: Maximize build space
             uses: ublue-os/remove-unwanted-software@v7
